@@ -15,48 +15,36 @@ const CanvasBackground = () => {
         image: '/enemy1.png',
         armor: 80
       }
-    const drawEnemy = (context: CanvasRenderingContext2D | null | undefined, enemy: { startPosition: { x: number; y: number; }; health: number; speed: number; image: string; armor: number; }, map: HTMLImageElement) =>{
+    const drawEnemy = (context: CanvasRenderingContext2D | null | undefined, enemy: { startPosition: { x: number; y: number; }; health: number; speed: number; image: string; armor: number; }) =>{
       if(context){    
-        // context.beginPath();
-        drawBackground(context, map);
         let count:number = 0;
         let animationId:number = 0;  
-
         const attributes = {
           health: enemy.health,
           speed: enemy.speed,
           armor: enemy.armor
-        }
-        
-
-        const renderer = () => {
-          
-        const newPosition ={
-          x: enemy.startPosition.x + count,
-          y: enemy.startPosition.y
-        } 
+        }      
+        const renderer = () => {          
+          const newPosition ={
+            x: enemy.startPosition.x + count,
+            y: enemy.startPosition.y
+          } 
         const enemyImage = new Image();
         enemyImage.src = enemy.image;
-        count += 0.5;
-        
+        count += 0.5;        
         context.drawImage(enemyImage, newPosition.x, newPosition.y, 60, 60)
-        
-        // console.log(Object.keys(attributes).length)
         for(let i = 0; i < Object.keys(attributes).length; i++){
-          // console.log(attributes[i].value);
-           context.fillRect(newPosition.x, newPosition.y - 20, attributes.health, 10)
-           context.fillStyle = 'red';
+          context.fillRect(newPosition.x, newPosition.y - 20, attributes.health, 10)
+          context.fillStyle = 'red';
 
-           context.fillRect(newPosition.x, newPosition.y - 30, attributes.armor, 10)
-           context.fillStyle = 'blue';
+          context.fillRect(newPosition.x, newPosition.y - 30, attributes.armor, 10)
+          context.fillStyle = 'blue';
 
-           context.fillRect(newPosition.x, newPosition.y - 10, attributes.speed, 10)
-           context.fillStyle = 'yellow';
+          context.fillRect(newPosition.x, newPosition.y - 10, attributes.speed, 10)
+          context.fillStyle = 'yellow';
         }
         
         animationId = window.requestAnimationFrame(renderer);
-        
-        drawBackground(context, map);
         }
         renderer()
           
@@ -70,6 +58,7 @@ const CanvasBackground = () => {
       map.onload = () => {
       context.drawImage(map, 0, 0, 1600, 700)
       }
+      drawEnemy(context, enemy, map);
     }
   }
 
@@ -78,12 +67,12 @@ const CanvasBackground = () => {
       const canvas = canvasRef.current;
       if(canvas){
         const ctx = canvas.getContext('2d');
-        ctx?.clearRect(0, 0, canvas.width, canvas.height);
+        // ctx?.clearRect(0, 0, canvas.width, canvas.height);
         const map = new Image();
         map.src = '/concept1.png'; 
-        // drawBackground(ctx, map);
-        drawEnemy(ctx, enemy, map);
-   
+        drawBackground(ctx, map);
+        drawEnemy(ctx, enemy);
+        // ctx?.clearRect(0, 0, canvas.width, canvas.height);
       };
     });
   
