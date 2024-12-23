@@ -22,7 +22,7 @@ const CanvasBackground = () => {
         let count:number = 0;
         let animationId:number = 0;  
 
-        const attributes : any = {
+        const attributes = {
           health: enemy.health,
           speed: enemy.speed,
           armor: enemy.armor
@@ -57,7 +57,6 @@ const CanvasBackground = () => {
         animationId = window.requestAnimationFrame(renderer);
         
         drawBackground(context, map);
-        // context?.clearRect(newPosition.x, newPosition.y, 40, 40);
         }
         renderer()
           
