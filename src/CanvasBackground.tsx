@@ -51,7 +51,7 @@ const CanvasBackground = () => {
            context.fillStyle = 'blue';
 
            context.fillRect(newPosition.x, newPosition.y - 10, attributes.speed, 10)
-           context.fillStyle = 'green';
+           context.fillStyle = 'yellow';
         }
         
         animationId = window.requestAnimationFrame(renderer);
