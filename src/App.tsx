@@ -1,14 +1,14 @@
 
-import CanvasBackground from './CanvasBackground';
-// import Unit from './Units/Unit';
+// import CanvasBackground from './CanvasBackground';
+import Game from './Game';
 
 function App() {
-    
+   
   return (
     <>    
-    <CanvasBackground/>
-    
-      </>
+    {/* <CanvasBackground/> */}
+    <Game />
+    </>
   )
 }
 
