@@ -1,7 +1,9 @@
-import { Stage, Layer} from 'react-konva';
-import Enemy from './Enemy';
+import { Stage, Layer, Line, Rect, Circle} from 'react-konva';
 import Board from './Board';
-import Healthbar from './Healthbar';
+import Unit from './Units/Unit';
+import Towers from './Towers';
+import TowerUnit from './Units/Towerunit';
+// import Tower from './Tower';
 
 function Game() {
 
@@ -18,7 +20,7 @@ function Game() {
       } 
 
     let count = 0;
-    let damageTaken:number = 0;
+    // let damageTaken:number = 0;
     const currentPostion = {
         x : enemy.startPosition.x,
         y : enemy.startPosition.y
@@ -30,14 +32,14 @@ function Game() {
       armor: initialAttributes.armor
     }    
     const renderer = () => {        
-      damageTaken += 0.1;
+      // damageTaken += 0.1;
       count += 0.5;
       
       currentPostion.x = enemy.startPosition.x + count;      
       
-      if (activeAttributes.health >= 2) { 
-        activeAttributes.health = enemy.startHealth - damageTaken;
-      }
+      // if (activeAttributes.health >= 2) { 
+      //   activeAttributes.health = enemy.startHealth - damageTaken;
+      // }
       
       window.requestAnimationFrame(renderer);
     
@@ -49,10 +51,53 @@ function Game() {
     <Stage width={window.innerWidth} height={window.innerHeight}>
       <Layer>        
         <Board/>
-        <Enemy position={currentPostion}/>
+        {/* <Enemy position={currentPostion} attributes={activeAttributes}/> */}
         {/* <Rect x={20} y={20} width={30} height={10} fill="blue" />  */}
         {/* <Rect x={currentPostion.x} y={currentPostion.y} width={currentHealth} height={5} fill="green" /> */}
-        <Healthbar position={currentPostion} attributes={activeAttributes}/>
+        {/* <Healthbar position={currentPostion} attributes={activeAttributes}/> */}
+        <Unit position={currentPostion} attributes={activeAttributes}/>
+        <Towers />
+        <Rect x={470} y={240} fill="green" width={60} height={60}/>
+        <TowerUnit position={{x:475,y:245} } />
+        {/* <Line
+          x={175}
+          y={245}
+          points={[-75, 190, 25, 0, 125, 190]}
+          tension={0.1}
+          closed
+          stroke="red"
+          // fillLinearGradientStartPoint={{ x: -50, y: -50 }}
+          // fillLinearGradientEndPoint={{ x: 50, y: 50 }}
+          // fillLinearGradientColorStops={[0, 'red', 1, 'yellow']}
+          transparency={0.1}
+        /> */}
+        {/* <Line
+          x={325}
+          y={245}
+          points={[0, 25, 25, 0, 50, 25, 25, 50]}
+          tension={0.1}
+          closed
+          stroke="red"
+          fillLinearGradientStartPoint={{ x: -50, y: -50 }}
+          fillLinearGradientEndPoint={{ x: 50, y: 50 }}
+          fillLinearGradientColorStops={[0, 'red', 1, 'yellow']}
+        /> */}
+        <Circle x={350} y={270} radius={175} fill="orange" opacity={0.3} />
+        <TowerUnit position={{x:400,y:405} } />
+        <Line
+          x={400}
+          y={405}
+          points={[-10, 25, 25, -10, 60, 25, 25, 60]}
+          // tension={0.1}
+          closed
+          stroke="orange"
+          strokeWidth={5}
+          // fill="orange"
+          // fillLinearGradientStartPoint={{ x: -50, y: -50 }}
+          // fillLinearGradientEndPoint={{ x: 50, y: 50 }}
+          // fillLinearGradientColorStops={[0, 'red', 1, 'yellow']}
+        />
+        {/* <TowerUnit position={{x:400,y:400} } /> */}
       </Layer>
     </Stage>
   );

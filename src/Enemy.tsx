@@ -64,9 +64,12 @@ export default function Enemy({position}:{position:{x:number,y:number}}) {
     };
   //  }, []);
     return (<>
-       {image && (
-                    <Image image={image} x={position.x} y={position.y} width={65} height={65} ref={imageRef} />
-                )}
+       {image && (       
+
+        <Image image={image} x={position.x} y={position.y} width={65} height={65} ref={imageRef} />
+         
+                  
+                )} 
     </>      
     );
 }
