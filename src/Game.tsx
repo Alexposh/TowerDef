@@ -1,8 +1,8 @@
-import { Stage, Layer, Line, Rect, Circle} from 'react-konva';
+import { Stage, Layer} from 'react-konva';
 import Board from './Board';
 import Unit from './Units/Unit';
 import Towers from './Towers';
-import TowerUnit from './Units/Towerunit';
+
 // import Tower from './Tower';
 
 function Game() {
@@ -50,54 +50,10 @@ function Game() {
   return (
     <Stage width={window.innerWidth} height={window.innerHeight}>
       <Layer>        
-        <Board/>
-        {/* <Enemy position={currentPostion} attributes={activeAttributes}/> */}
-        {/* <Rect x={20} y={20} width={30} height={10} fill="blue" />  */}
-        {/* <Rect x={currentPostion.x} y={currentPostion.y} width={currentHealth} height={5} fill="green" /> */}
-        {/* <Healthbar position={currentPostion} attributes={activeAttributes}/> */}
-        <Unit position={currentPostion} attributes={activeAttributes}/>
-        <Towers />
-        <Rect x={470} y={240} fill="green" width={60} height={60}/>
-        <TowerUnit position={{x:475,y:245} } />
-        {/* <Line
-          x={175}
-          y={245}
-          points={[-75, 190, 25, 0, 125, 190]}
-          tension={0.1}
-          closed
-          stroke="red"
-          // fillLinearGradientStartPoint={{ x: -50, y: -50 }}
-          // fillLinearGradientEndPoint={{ x: 50, y: 50 }}
-          // fillLinearGradientColorStops={[0, 'red', 1, 'yellow']}
-          transparency={0.1}
-        /> */}
-        {/* <Line
-          x={325}
-          y={245}
-          points={[0, 25, 25, 0, 50, 25, 25, 50]}
-          tension={0.1}
-          closed
-          stroke="red"
-          fillLinearGradientStartPoint={{ x: -50, y: -50 }}
-          fillLinearGradientEndPoint={{ x: 50, y: 50 }}
-          fillLinearGradientColorStops={[0, 'red', 1, 'yellow']}
-        /> */}
-        <Circle x={350} y={270} radius={175} fill="orange" opacity={0.3} />
-        <TowerUnit position={{x:400,y:405} } />
-        <Line
-          x={400}
-          y={405}
-          points={[-10, 25, 25, -10, 60, 25, 25, 60]}
-          // tension={0.1}
-          closed
-          stroke="orange"
-          strokeWidth={5}
-          // fill="orange"
-          // fillLinearGradientStartPoint={{ x: -50, y: -50 }}
-          // fillLinearGradientEndPoint={{ x: 50, y: 50 }}
-          // fillLinearGradientColorStops={[0, 'red', 1, 'yellow']}
-        />
-        {/* <TowerUnit position={{x:400,y:400} } /> */}
+        <Board/>        
+        <Towers />   
+        <Unit position={currentPostion} attributes={activeAttributes}/>      
+   
       </Layer>
     </Stage>
   );

@@ -1,10 +1,10 @@
-import { useState } from "react";
 import TowerPlace from "./TowerPlace"
+
 
 
 export default function Towers() {
 
-    const places = [
+   const places = [
         {
             id: 1,
             position: {x: 200, y: 270},
@@ -170,20 +170,23 @@ export default function Towers() {
             id:24,
             position: {x: 1775, y: 430},
             playerColor: 'green',
-            selected: true,
+            selected: false,
             occupied: false
         }
        
-    ]
-    const [selected, setSelected] = useState(false);
-  const toggleSelected = () => setSelected(selected => !selected);
-
+    ];
+  
     return   (
         <>
         <div>
         {places.map(place => (
             <li>
-              <TowerPlace position={{x: place.position.x, y: place.position.y}} player={place.playerColor} selected={place.selected}/>
+              <TowerPlace 
+                        id={place.id}
+                        position={{x: place.position.x, y: place.position.y}} 
+                        player={place.playerColor} 
+                        selected={place.selected} 
+                       />
             </li>
           ))}
           </div>
